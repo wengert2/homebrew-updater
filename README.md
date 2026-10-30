@@ -28,6 +28,10 @@ Only one run can happen at a time.
 
 ## Enable upgrades
 
+> **Warning:** Automatic upgrades install new software without review. They can
+> break packages or apps, and `brew cleanup` removes older versions that could
+> be used to roll back. Test in check-only mode first and keep backups.
+
 Edit `~/.config/homebrew-updater/config` and set:
 
 ```sh
@@ -42,7 +46,8 @@ HOMEBREW_AUTO_UPGRADE=1 "$HOME/.local/bin/homebrew-updater.sh"
 
 Upgrades run non-interactively with `--no-ask`, leave running apps alone
 (`--no-quit`), and finish with `brew cleanup`. Regular casks are included;
-greedy, latest-version, and auto-updating casks are not.
+greedy, latest-version, and auto-updating casks are not. Restart an app after a
+cask upgrade if needed.
 
 ## Schedule
 
@@ -70,3 +75,7 @@ This removes the agent and script. The log and config are left in place.
 - A missed run may start after the Mac wakes from sleep.
 - Reinstalling keeps your config and removes any older `homebrew-weekly`
   install.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
